@@ -1,0 +1,14 @@
+{
+  "default": {
+    "urls":[
+      {
+        "url": "https://www.example.com/foorbar/",
+        "name": "Foo"
+      },
+      {
+        "url": "https://www.excample.com/foo/bar/",
+        "name": "Foo/Bar"
+      }
+    ]
+  }
+}

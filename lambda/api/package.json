@@ -1,0 +1,16 @@
+{
+  "name": "@lightberg/api-processor",
+  "version": "1.0.0",
+  "description": "Processes lightberg API request",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.252.1",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
