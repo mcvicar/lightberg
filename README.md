@@ -5,7 +5,7 @@ Lightberg is a proof of concept using [Google's lighthouse](https://github.com/G
 The basic set up for this _should be_;
 * Update vars.tf with your own bucket names
 * Run the terraform plan
-* Post the JSON to AWS API Gateway (see [lambda_example_events/api_example.json](blob/master/lambda_example_events/api_example.json))
+* Post the JSON to AWS API Gateway (see [lambda_example_events/api_example.json](./lambda_example_events/api_example.json))
 * Get back both the HTML and JSON reports for each URL
 * Get an overall report HTML page linking to each report
 * Profit!?
