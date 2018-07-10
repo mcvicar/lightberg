@@ -57,6 +57,6 @@ I can not stress this enough, this is a **proof of concept**. AWS has many hard 
 Please, _please_, make sure your API Gateway has a some form of security on it. Don't try an put all the URLs from 100 of your favourite site's sitemap.xml file into this. Finally, if you suddenly find you're in debt to AWS for lots of cash and blame this system for that, I can only suggest setting up alarm billing as something **you need to do right now**.
 
 ## TODO
-* Get SNS fanout, the summary step function and API gateway into terraform and safely into the lambda function...
-* Add in [AWS Quicksight](https://aws.amazon.com/quicksight/) into Terraform and create a default dashboard based on the JSON reports so you can track over time, etc.
+* Get the API gateway into terraform...
+* Add in a [AWS Quicksight](https://aws.amazon.com/quicksight/) default dashboard based on the JSON reports so you can track over time, etc.
 * Likely change the system when lighthouse v3 gets released.

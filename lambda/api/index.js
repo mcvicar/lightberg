@@ -5,6 +5,7 @@ const variables = require("./vars.tfvars");
 
 exports.handler = function (event, context, callback) {
   const reportDest = new Date().toISOString();
+  const sns = new AWS.SNS();
 
   /**
    * I'm making the assumption that the report buckets exist, not sure that's
@@ -19,7 +20,11 @@ exports.handler = function (event, context, callback) {
         event[project].urls[i].htmlDest = htmlReportBucket + "/" + reportDest + "/" + project + "/" + urlHash;
         event[project].urls[i].jsonDest = jsonReportBucket + "/" + reportDest + "/" + project + "/" + urlHash;
 
-        // Send event[project].urls[i] to fanout (processor/index.js)
+        // Sending event[project].urls[i] to fanout (processor/index.js)
+        sns.publish({
+          Message: JSON.stringify(event[project].urls[i]),
+          TopicArn: process.env.SNS_ARN
+        });
       }
   }
   // Pass to Step function for has report/index.js as next step
