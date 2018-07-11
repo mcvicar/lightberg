@@ -7,7 +7,7 @@ function uploadReport(dest, file, report)
   var s3bucket = new AWS.S3();
    s3bucket.putObject(params, function(err, data) {
        if (err) {
-           console.log("Error uploading data: ", err);
+           console.log("Error uploading data: " + err);
        } else {
            res.writeHead(200, {'Content-Type':'text/plain'});
            res.write("Successfully uploaded report to " + dest);
@@ -16,22 +16,23 @@ function uploadReport(dest, file, report)
 }
 
 exports.handler = function (event, context, callback) {
+  console.log(event.Records[0].Sns);
   Promise.resolve()
-    .then(() => createLighthouse(event.url, { logLevel: 'info' }))
+    .then(() => createLighthouse(event.Sns.url, { logLevel: 'info' }))
     .then(({ chrome, start, createReport }) => {
       return start()
         .then((results) => {
           const htmlReport = createReport(results);
           console.log(htmlReport);
           console.log(results);
-          uploadReport(event.htmlDest, "index.html", htmlReport);
-          uploadReport(event.jsonDest, "index.json", JSON.stringify(results));
-          return chrome.kill().then(() => callback(null)))
+          uploadReport(event.Sns.htmlDest, "index.html", htmlReport);
+          uploadReport(event.Sns.jsonDest, "index.json", JSON.stringify(results));
+          return chrome.kill().then(() => callback(null))
         })
         .catch((error) => {
           // Handle errors when running Lighthouse
           console.log(error);
-          return chrome.kill().then(() => callback(null)))
+          return chrome.kill().then(() => callback(null))
         })
     })
     // Handle other errors

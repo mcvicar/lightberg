@@ -1,7 +1,8 @@
 'use strict';
 const uuidv5 = require('uuid/v5');
 const AWS = require('aws-sdk');
-const variables = require("./vars.tfvars");
+const htmlReportBucket = "lightberg-html";
+const jsonReportBucket = "lightberg-json";
 
 exports.handler = function (event, context, callback) {
   const reportDest = new Date().toISOString();
@@ -19,6 +20,7 @@ exports.handler = function (event, context, callback) {
         event[project].urls[i].urlHash = urlHash;
         event[project].urls[i].htmlDest = htmlReportBucket + "/" + reportDest + "/" + project + "/" + urlHash;
         event[project].urls[i].jsonDest = jsonReportBucket + "/" + reportDest + "/" + project + "/" + urlHash;
+        event[project].urls[i].default = "lambda"
 
         // Sending event[project].urls[i] to fanout (processor/index.js)
         sns.publish({

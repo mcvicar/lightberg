@@ -1,7 +1,17 @@
 {
-  "url": "https://www.example.com/foo/",
-  "name": "Foo",
-  "urlHash": "b7597fd8-28d3-556c-8276-781e15c76850",
-  "htmlDest": "lightberg-html/2018-06-10T21:16:56.441Z/default/b7597fd8-28d3-556c-8276-781e15c76850",
-  "jsonDest": "lightberg-json/2018-06-10T21:16:56.441Z/default/b7597fd8-28d3-556c-8276-781e15c76850"
-},
+  "Records":
+  [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:eu-west-1:123456789012:lightberg:00000000-0000-0000-0000-00000000000",
+      "Sns": {
+        "url": "https://www.example.com/foo/",
+        "name": "Foo",
+        "urlHash": "b7597fd8-28d3-556c-8276-781e15c76850",
+        "htmlDest": "lightberg-html/2018-06-10T21:16:56.441Z/default/b7597fd8-28d3-556c-8276-781e15c76850",
+        "jsonDest": "lightberg-json/2018-06-10T21:16:56.441Z/default/b7597fd8-28d3-556c-8276-781e15c76850"
+      }
+    }
+  ]
+}
