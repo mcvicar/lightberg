@@ -16,7 +16,6 @@ function uploadReport(dest, file, report)
 }
 
 exports.handler = function (event, context, callback) {
-  console.log(event.Records[0].Sns);
   Promise.resolve()
     .then(() => createLighthouse(event.Sns.url, { logLevel: 'info' }))
     .then(({ chrome, start, createReport }) => {
