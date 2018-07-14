@@ -20,6 +20,8 @@ The architecture is pretty straight forward.
   * The Fanout lambda function is basically just https://github.com/joytocode/lighthouse-lambda
   * Each URL report filename is based on [uuid v5 URL domain](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions_3_and_5_(namespace_name-based)), so there shouldn't be clashes
 * Step function creates an overview report so you can navigate the results. This is saved at the root of the HTML S3 Bucket (index.html)
+![Architecture Diagram](./docs/ArchDiagram.png)
+
 
 ## Example JSON to post
 A simple example of the JSON to post. By default you need a "project" (in this case "example.com" or "example.org") and an array of URLs and names for the URL within that project.
