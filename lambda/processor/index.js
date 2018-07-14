@@ -16,16 +16,17 @@ function uploadReport(dest, file, report)
 }
 
 exports.handler = function (event, context, callback) {
+  var report =  JSON.parse(event.Records[0].Sns.Message);
+
   Promise.resolve()
-    .then(() => createLighthouse(event.Sns.url, { logLevel: 'info' }))
+    .then(() => createLighthouse(report.url, { logLevel: 'info' }))
     .then(({ chrome, start, createReport }) => {
       return start()
         .then((results) => {
           const htmlReport = createReport(results);
-          console.log(htmlReport);
-          console.log(results);
-          uploadReport(event.Sns.htmlDest, "index.html", htmlReport);
-          uploadReport(event.Sns.jsonDest, "index.json", JSON.stringify(results));
+          console.log(report.url);
+          uploadReport(report.htmlDest, "index.html", htmlReport);
+          uploadReport(report.jsonDest, "index.json", JSON.stringify(results));
           return chrome.kill().then(() => callback(null))
         })
         .catch((error) => {

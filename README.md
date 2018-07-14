@@ -10,7 +10,7 @@ The basic set up for this _should be_;
 * Get an overall report HTML page linking to each report
 * Profit!?
 
-I say should be as the terraform plan is very much a work in progress, but the individual lambda functions work, but do require you to manually set up the SNS topic and step functions.
+I say should be as the terraform plan is very much a work in progress, but the individual lambda functions work, the SNS topic and step functions should also be generated.
 
 ## Architecture
 The architecture is pretty straight forward.
@@ -53,7 +53,7 @@ A simple example of the JSON to post. By default you need a "project" (in this c
 ```
 
 ## Remember this is a proof of concept!
-I can not stress this enough, this is a **proof of concept**. AWS has many hard and soft limits on many of the systems used (e.g total number of concurrent Lambda process that can run in parallel, size of the **decompressed** lambda function, etc). I've not set any limits to stop you from hitting them.
+I can not stress this enough, this is a **proof of concept**. AWS has many hard and soft limits on many of the systems used (e.g total number of concurrent Lambda process that can run in parallel, size of the _decompressed_ lambda function, etc). I've not set any limits to stop you from hitting them.
 Please, _please_, make sure your API Gateway has a some form of security on it. Don't try an put all the URLs from 100 of your favourite site's sitemap.xml file into this. Finally, if you suddenly find you're in debt to AWS for lots of cash and blame this system for that, I can only suggest setting up alarm billing as something **you need to do right now**.
 
 ## TODO
